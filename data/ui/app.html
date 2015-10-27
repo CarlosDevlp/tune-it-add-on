@@ -1,0 +1,294 @@
+<html>
+  <head>
+    <title>Tune it!</title>
+    <link type="text/css" rel="stylesheet" href="../framework/jquery-ui.min.css">
+ 	<link type="text/css" rel="stylesheet" href="../framework/color-picker.css">
+
+ 	<style>
+
+ 		select, fieldset select{ 			
+ 			width: 250px;
+ 		} 
+ 		input{
+ 			width: 80%;
+ 		}
+ 		/*all menu*/
+ 		.menu,.menu fieldset{
+ 			display: block;
+ 			padding-left:5%; 
+ 		}
+ 		/*main menu*/
+ 		 		
+ 		.pallete-menu,.themes-menu,.options-menu{
+ 			display: none;
+ 		}
+ 		/*buttons*/
+ 		#start,.btnNav{
+			margin-left: 10%;
+			width: 80%;
+ 		}
+ 		.btnBack{
+ 			margin-left: 0;
+			width: 40px;
+			height: 40px;stored-sites
+ 			border-radius: 100%;
+ 		}
+ 		/*stored sites*/
+ 		.stored-sites{
+ 			display: none; 			
+ 		}
+ 		.stored-sites >b + div{ 			
+ 			width: 100%;
+ 			display: inline;
+ 		}
+ 		.stored-sites >b + div input{
+ 			width: 60%;
+ 			display: inline;
+ 		}
+ 		.stored-sites >b + div button{
+ 			height:30px;
+ 			width: 35%;
+ 			display: inline;
+ 		}
+
+ 		.stored-sites > button{
+ 			margin-left: 9%;
+ 			width:80%;
+ 		} 	
+ 		.stored-sites .pagesList{
+ 			margin-top: 10px;
+ 			margin-bottom: 10px;
+ 			padding: 5px;
+ 			margin-left: 9%;
+ 			width:80%; 
+ 			height:100px;
+ 			border:2px solid lightblue;
+ 			color: gray;
+ 			text-align: center;
+ 			overflow-y: scroll;
+ 		}
+ 		.stored-sites .pagesList > div{
+ 			cursor: pointer;
+ 			background: rgba(223, 223, 223, 0.97);
+ 			margin-bottom:2px; 
+ 			height: 18px;
+ 		}
+ 		.stored-sites .pagesList > div:hover{
+ 			background: gray;
+ 			color: white;
+ 		}	
+ 		/*color picker*/
+		.trigger {
+			position: relative;
+			display: inline-block;
+			width: 80%;
+			padding: 4px;
+			height: 25px;
+			border: 1px solid #666;
+			border-radius: 2px;
+			background: #eee;
+			box-shadow: inset 0 -17px 8px rgba(0,0,0,0.3), inset 0 -4px 7px rgba(0,0,0,0.3);
+		}
+		.trigger:after {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 50%;
+			right: 5px;
+			margin-top: -2px;
+			border: 5px solid;
+			border-color: #000 transparent transparent;
+		}
+		.trigger:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 50%;
+			right: 4px;
+			margin-top: -1px;
+			border: 5px solid;
+			border-color: #eee transparent transparent;
+		}				
+		.trigger div {
+			display: inline-block;
+			width: 23px;
+			height: 23px;
+			background: #fff url('data:image/gif;base64,R0lGODlhDAAMAIABAMzMzP///yH5BAEAAAEALAAAAAAMAAwAAAIWhB+ph5ps3IMyQFBvzVRq3zmfGC5QAQA7');
+		}
+
+
+ 	</style>
+  </head>
+  <body>
+    
+      <h2>Tune it!</h2>
+      <div class="menu main-menu">
+      	<h4>Let's Start Tuning</h4>
+      	<button class="btnNav" value="pallete-menu">Create Themes</button>
+      	<button class="btnNav" value="themes-menu">Stored Themes</button>
+      	<button class="btnNav" value="options-menu">Options</button>
+      	<h4>or just..</h4>
+      </div>
+      <div class="menu pallete-menu">
+	      <fieldset>	      	
+			<legend>
+			<button class="btnNav btnBack" value="main-menu"><</button>
+			Pallete:
+			</legend>
+			<div><b>Background Color:</b></div>
+			<input class="trigger" id="backColor" value="#636669" />					
+			<div><b>Text Color:</b></div>
+			<input class="trigger" id="textColor" value="#FFFFFF" />
+	      </fieldset>
+      </div>
+
+      <div class="menu themes-menu">
+	      <fieldset> 	        
+			<legend>
+			<button class="btnNav btnBack" value="main-menu"><</button>
+				Themes:
+			</legend>
+			
+			<div><b>Choose your themes:</b></div>
+				<select>
+				  <option selected="selected">Tired Eyes</option>
+				  <option>It's night</option>
+				  <option>Electric</option>
+				  <option>Sublime</option>
+				</select>
+	      </fieldset>
+      </div>
+
+      <div class="menu options-menu">
+	      <fieldset>	      	
+			<legend>
+			<button class="btnNav btnBack" value="main-menu"><</button>
+			Application Options
+			</legend>
+			<div><b>Mode:</b></div>
+				<select class="mode">
+				  <option selected="selected" 
+				  			  value="all">All pages affected</option>
+				  <option value="stored" >My Stored Pages</option>
+				  <option value="normal" >Just Current Page</option>
+				  <option value="manual" >Tune Each part Manually</option>
+				</select>
+
+				<div class="stored-sites">
+					<b>Stored Websites:</b>
+					<div>
+						<input type="text" />
+						<button class="btnAdd">Add</button>
+					</div>
+					<br>
+					<div class="pagesList">
+						<p><b style="color:lightblue;">No pages are Stored</b></p>
+					</div>					
+					<br>
+					<button class="btnSave">Save List</button>
+				</div>
+
+	      </fieldset>
+      </div>
+		<br/>	
+      <button id="start">Tune it!</button>
+	  
+	<script src="../framework/jquery.js"></script>
+	<script src="../framework/jquery-ui.min.js"></script> 
+	<script src="../framework/color-picker.min.js"></script> 
+	<script src="../framework/contextmenu.js"></script>
+	<script>
+		var storedPages=[];
+		//when the document is ready
+		$(document).on("ready",function(){			
+			
+			if(localStorage.tuneIt){
+								
+				storedPages=JSON.parse(localStorage.tuneIt).storedPages;				
+				//create pagesList with storedPages
+				var pagesList="";
+				if(storedPages.length){
+					for(var i in storedPages)
+						pagesList+="<div><b>"+storedPages[i]+"</div></b>";
+					$('.stored-sites .pagesList').html(pagesList);
+				}
+
+			}
+			else//create tuneIt for first time
+			   localStorage.tuneIt=JSON.stringify({
+										storedPages:[]//n pages that are saved to be affected
+									});
+			
+		});
+		//buttons
+		$("button").button();
+		//selects
+		$("select").selectmenu();
+		//color picker
+		$('.trigger').colorPicker();
+		//context menu
+		$('.context').contextmenu();
+		//navigation through menu
+		$('.btnNav').on('click',function(){
+			var goToMenu=$(this).attr('value');
+			$(".menu").css({"display":"none"});
+			$("."+goToMenu).css({"display":"initial"});
+						
+		});
+		//when you select something in options menu		
+		$(".mode").on("selectmenuchange",function(){				
+				if($(this).val()=='stored')
+					$(".stored-sites").css({"display":"block"});
+				else
+					$(".stored-sites").css({"display":"none"});
+		});
+
+		//Stored Pages
+			//add pages to list
+			var addPage=function(){
+				var newPage=$('.stored-sites input').val();
+				if($.trim(newPage)){
+
+					var updatedList="<div>"+newPage+"</div>"
+						+((storedPages.length>0)?$('.stored-sites .pagesList').html():"");
+					$('.stored-sites .pagesList').html(updatedList);
+					storedPages.push($('.stored-sites input').val());
+
+					$('.stored-sites input').val('');
+				}
+			};
+
+			$('.stored-sites .btnAdd').on("click",addPage);
+			$('.stored-sites input').on("keypress",function(e){
+				if(e.which == 13)
+						addPage();
+			});
+	
+			//save pages from pages list
+			$('.stored-sites .btnSave').on("click",function(){						
+					localStorage.tuneIt=JSON.stringify({
+										storedPages:storedPages
+									});
+			});
+			//context menu
+			$('.stored-sites .pagesList').contextmenu({
+			    delegate: "div",
+			    menu: [
+			       		{title: "Delete", cmd: "delete"},
+			       		{title: "Delete All", cmd: "delete_all"}
+			        ],
+			    select: function(event, ui) {
+			    	switch(ui.cmd){
+			    		case 'delete':
+			    			ui.target.remove();
+			    		break;
+			    		case 'delete_all':
+			    			$('.stored-sites .pagesList').html('');
+			    		break;
+			    	}			        
+			    }
+			});
+	</script>
+
+  </body>
+</html>

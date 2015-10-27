@@ -1,0 +1,13 @@
+{
+  "title": "TuneItWebAddOn",
+  "name": "tuneit",
+  "version": "0.0.1",
+  "description": "This add-on allows you change the theme used, by any web, for the one that can be better for you.",
+  "main": "index.js",
+  "author": "Carlos Chavez Laguna.",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT"
+}
